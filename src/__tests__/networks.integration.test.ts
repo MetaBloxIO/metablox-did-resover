@@ -175,7 +175,7 @@ describe('metabloxResolver (alt-chains)', () => {
 
     it('resolves public keys and services on aurora when configured', async () => {
       const did = 'did:metablox:aurora:0x036d148205e34a8591dcdcea34fb7fed760f5f1eca66d254830833f755ff359ef0'
-      const ethr = getResolver({
+      const metablox = getResolver({
         networks: [
           {
             name: 'aurora',
@@ -185,7 +185,7 @@ describe('metabloxResolver (alt-chains)', () => {
           },
         ],
       })
-      const resolver = new Resolver(ethr)
+      const resolver = new Resolver(metablox)
       const doc = await resolver.resolve(did)
       return expect(doc).toEqual({
         didDocumentMetadata: {

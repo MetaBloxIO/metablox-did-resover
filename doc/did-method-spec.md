@@ -20,7 +20,7 @@ management system intended explicitly for off-chain usage.
 The described DID method allows any Ethereum smart contract or key pair account, or any secp256k1 public key to become
 a valid identifier. Such an identifier needs no registration. In case that key management or additional attributes such
 as "service endpoints" are required, they are resolved using ERC1056 smart contracts deployed on the networks listed in
-the [registry repository](https://github.com/uport-project/ethr-did-registry#contract-deployments).
+the [registry repository](https://github.com/uport-project/metablox-did-registry#contract-deployments).
 
 Most networks use the default registry address: `0xdca7ef03e98e0dc2b855be647c39abe984fcf21b`.
 
@@ -66,7 +66,7 @@ The target system is the Ethereum network where the ERC1056 is deployed. This co
 
 Since this DID method still supports `publicKeyHex` and `publicKeyBase64` encodings for verification methods, it
 requires a valid JSON-LD context for those entries.
-To enable JSON-LD processing, the `@context` used when constructing DID documents for `did:ethr` should be:
+To enable JSON-LD processing, the `@context` used when constructing DID documents for `did:metablox` should be:
 
 ```
 "@context": [
@@ -79,9 +79,9 @@ You will also need this `@context` if you need to use `EcdsaSecp256k1RecoveryMet
 
 ## DID Method Name
 
-The namestring that shall identify this DID method is: `ethr`
+The namestring that shall identify this DID method is: `metablox`
 
-A DID that uses this method MUST begin with the following prefix: `did:ethr`. Per the DID specification, this string
+A DID that uses this method MUST begin with the following prefix: `did:metablox`. Per the DID specification, this string
 MUST be in lowercase. The remainder of the DID, after the prefix, is specified below.
 
 ## Method Specific Identifier
@@ -89,9 +89,9 @@ MUST be in lowercase. The remainder of the DID, after the prefix, is specified b
 The method specific identifier is represented as the HEX-encoded secp256k1 public key (in compressed form),
 or the corresponding HEX-encoded Ethereum address on the target network, prefixed with `0x`.
 
-    ethr-did = "did:ethr:" ethr-specific-identifier
-    ethr-specific-identifier = [ ethr-network ":" ] ethereum-address / public-key-hex
-    ethr-network = "mainnet" / "goerli" / network-chain-id
+    metablox-did = "did:metablox:" metablox-specific-identifier
+    metablox-specific-identifier = [ metablox-network ":" ] ethereum-address / public-key-hex
+    metablox-network = "mainnet" / "goerli" / network-chain-id
     network-chain-id = "0x" *HEXDIG
     ethereum-address = "0x" 40*HEXDIG
     public-key-hex = "0x" 66*HEXDIG
@@ -104,9 +104,9 @@ in the resulting DID document.
 Note, if no public Ethereum network was specified, it is assumed that the DID is anchored on the Ethereum mainnet by
 default. This means the following DIDs will resolve to equivalent DID Documents:
 
-    did:ethr:mainnet:0xb9c5714089478a327f09197987f16f9e5d936e8a
-    did:ethr:0x1:0xb9c5714089478a327f09197987f16f9e5d936e8a
-    did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a
+    did:metablox:mainnet:0xb9c5714089478a327f09197987f16f9e5d936e8a
+    did:metablox:0x1:0xb9c5714089478a327f09197987f16f9e5d936e8a
+    did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a
 
 If the identifier is a `public-key-hex`:
 
@@ -118,10 +118,10 @@ If the identifier is a `public-key-hex`:
 
 ## Relationship to ERC1056
 
-The subject of a `did:ethr` is mapped to an `identity` Ethereum address in the ERC1056 contract. When dealing with
+The subject of a `did:metablox` is mapped to an `identity` Ethereum address in the ERC1056 contract. When dealing with
 public key identifiers, the Ethereum address corresponding to that public key is used to represent the controller.
 
-The controller address of a `did:ethr` is mapped to the `owner` of an `identity` in the ERC1056.
+The controller address of a `did:metablox` is mapped to the `owner` of an `identity` in the ERC1056.
 The controller address is not listed as the [DID `controller`](https://www.w3.org/TR/did-core/#did-controller) property
 in the DID document. This is intentional, to simplify the verification burden required by the DID spec.
 Rather, this address it is a concept specific to ERC1056 and defines the address that is allowed to perform Update and
@@ -135,13 +135,13 @@ ID `${did}#controllerKey` in all locations where `#controller` appears.
 
 ### Create (Register)
 
-In order to create a `ethr` DID, an Ethereum address, i.e., key pair, needs to be generated. At this point, no
+In order to create a `metablox` DID, an Ethereum address, i.e., key pair, needs to be generated. At this point, no
 interaction with the target Ethereum network is required. The registration is implicit as it is impossible to brute
 force an Ethereum address, i.e., guessing the private key for a given public key on the Koblitz Curve
 (secp256k1). The holder of the private key is the entity identified by the DID.
 
-The default DID document for an `did:ethr<Ethereum address>` on mainnet, e.g.
-`did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74` with no transactions to the ERC1056 registry looks like this:
+The default DID document for an `did:metablox<Ethereum address>` on mainnet, e.g.
+`did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74` with no transactions to the ERC1056 registry looks like this:
 
 ```json
 {
@@ -149,25 +149,25 @@ The default DID document for an `did:ethr<Ethereum address>` on mainnet, e.g.
     "https://www.w3.org/ns/did/v1",
     "https://w3id.org/security/suites/secp256k1recovery-2020/v2"
   ],
-  "id": "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a",
+  "id": "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a",
   "verificationMethod": [
     {
-      "id": "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller",
+      "id": "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
-      "controller": "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a",
+      "controller": "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a",
       "blockchainAccountId": "eip155:1:0xb9c5714089478a327f09197987f16f9e5d936e8a"
     }
   ],
   "authentication": [
-    "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
+    "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
   ],
   "assertionMethod": [
-    "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
+    "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
   ]
 }
 ```
 
-The minimal DID Document for a `did:ethr:<public key>` where there are no corresponding TXs to the ERC1056 registry
+The minimal DID Document for a `did:metablox:<public key>` where there are no corresponding TXs to the ERC1056 registry
 looks like this:
 
 ```json
@@ -176,28 +176,28 @@ looks like this:
     "https://www.w3.org/ns/did/v1",
     "https://w3id.org/security/suites/secp256k1recovery-2020/v2"
   ],
-  "id": "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
+  "id": "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
   "verificationMethod": [
     {
-      "id": "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controller",
+      "id": "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controller",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
-      "controller": "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
+      "controller": "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
       "blockchainAccountId": "eip155:1:0xb9c5714089478a327f09197987f16f9e5d936e8a"
     },
     {
-      "id": "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controllerKey",
+      "id": "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controllerKey",
       "type": "EcdsaSecp256k1VerificationKey2019",
-      "controller": "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
+      "controller": "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
       "publicKeyHex": "0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798"
     }
   ],
   "authentication": [
-    "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controller",
-    "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controllerKey"
+    "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controller",
+    "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controllerKey"
   ],
   "assertionMethod": [
-    "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controller",
-    "did:ethr:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controllerKey"
+    "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controller",
+    "did:metablox:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798#controllerKey"
   ]
 }
 ```
@@ -247,7 +247,7 @@ After building the history of events for an address, interpret each event to bui
 
 ##### Controller changes (`DIDOwnerChanged`)
 
-When the controller address of a `did:ethr` is changed, a `DIDOwnerChanged` event is emitted.
+When the controller address of a `did:metablox` is changed, a `DIDOwnerChanged` event is emitted.
 
 ```solidity
 event DIDOwnerChanged(
@@ -303,9 +303,9 @@ Example:
 
 ```json
 {
-  "id": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
+  "id": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
   "type": "EcdsaSecp256k1RecoveryMethod2020",
-  "controller": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
+  "controller": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
   "blockchainAccountId": "eip155:1:0x12345678c498d9e26865f34fcaa57dbb935b0d74"
 }
 ```
@@ -367,9 +367,9 @@ generates a verification method entry like the following:
 
 ```json
 {
-  "id": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
+  "id": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
   "type": "EcdsaSecp256k1VerificationKey2019",
-  "controller": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
+  "controller": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
   "publicKeyHex": "02b97c30de767f084ce3080168ee293053ba33b235d7116a3263d29f1450936b71"
 }
 ```
@@ -382,9 +382,9 @@ generates a verification method entry like this:
 
 ```json
 {
-  "id": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
+  "id": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
   "type": "Ed25519VerificationKey2018",
-  "controller": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
+  "controller": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
   "publicKeyBase58": "DV4G2kpBKjE6zxKor7Cj21iL9x9qyXb6emqjszBXcuhz"
 }
 ```
@@ -398,9 +398,9 @@ generates a verification method entry like this:
 
 ```json
 {
-  "id": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
+  "id": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#delegate-1",
   "type": "X25519KeyAgreementKey2019",
-  "controller": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
+  "controller": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74",
   "publicKeyBase64": "MCowBQYDK2VuAyEAEYVXd3/7B4d0NxpSsA/tdVYdz5deYcR1U+ZkphdmEFI="
 }
 ```
@@ -419,7 +419,7 @@ A `DIDAttributeChanged` event for the account `0xf3beac30c498d9e26865f34fcaa57db
 
 ```json
 {
-  "id": "did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#service-1",
+  "id": "did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74#service-1",
   "type": "HubService",
   "serviceEndpoint": "https://hubs.uport.me"
 }
@@ -531,7 +531,7 @@ Example:
 
 This DID method supports resolving previous versions of the DID document by specifying a `versionId` parameter.
 
-Example: `did:ethr:0x26bf14321004e770e7a8b080b7a526d8eed8b388?versionId=12090175`
+Example: `did:metablox:0x26bf14321004e770e7a8b080b7a526d8eed8b388?versionId=12090175`
 
 The `versionId` is the block number at which the DID resolution MUST be performed.
 Only ERC1056 events prior to or contained in this block number are to be considered when building the event history.
@@ -577,7 +577,7 @@ TBD
 
 ## Reference Implementations
 
-The code at [https://github.com/decentralized-identity/ethr-did-resolver]() is intended to present a reference
+The code at [https://github.com/decentralized-identity/metablox-did-resolver]() is intended to present a reference
 implementation of this DID method.
 
 ## References
@@ -586,6 +586,6 @@ implementation of this DID method.
 
 **[2]** <https://github.com/ethereum/EIPs/issues/1056>
 
-**[3]** <https://github.com/decentralized-identity/ethr-did-resolver>
+**[3]** <https://github.com/decentralized-identity/metablox-did-resolver>
 
-**[4]** <https://github.com/uport-project/ethr-did-registry>
+**[4]** <https://github.com/uport-project/metablox-did-registry>

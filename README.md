@@ -26,7 +26,7 @@ eg:
 Multi-network DIDs are also supported, if the proper configuration is provided during setup.
 
 For example:
-`did:ethr:0x5:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74` gets resolved on the goerli testnet (chainID=0x5), and
+`did:metablox:0x5:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74` gets resolved on the goerli testnet (chainID=0x5), and
 represents a distinct identifier than the generic one, with different DID documents and different key rotation history.
 
 ## DID Document
@@ -44,20 +44,20 @@ the registry looks like this:
     "https://www.w3.org/ns/did/v1",
     "https://w3id.org/security/suites/secp256k1recovery-2020/v2"
   ],
-  "id": "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a",
+  "id": "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a",
   "verificationMethod": [
     {
-      "id": "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller",
+      "id": "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
-      "controller": "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a",
+      "controller": "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a",
       "blockchainAccountId": "eip155:1:0xb9c5714089478a327f09197987f16f9e5d936e8a"
     }
   ],
   "authentication": [
-    "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
+    "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
   ],
   "assertionMethod": [
-    "did:ethr:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
+    "did:metablox:0xb9c5714089478a327f09197987f16f9e5d936e8a#controller"
   ]
 }
 ```
@@ -71,7 +71,7 @@ type `EcdsaSecp256k1RecoveryMethod2020` and an `blockchainAccountId` attribute c
 ## Building a DID document
 
 The DID document is not stored as a file, but is built by using read only functions and contract events on
-the [ethr-did-registry](https://github.com/uport-project/ethr-did-registry) Ethereum smart contract.
+the [metablox-did-registry](https://github.com/uport-project/metablox-did-registry) Ethereum smart contract.
 
 Please see the [spec](doc/did-method-spec.md) for details of how the DID document and corresponding metadata are
 computed.
@@ -86,22 +86,22 @@ constructor:
 
 ```javascript
 import { Resolver } from 'did-resolver'
-import { getResolver } from 'ethr-did-resolver'
+import { getResolver } from 'metablox-did-resolver'
 
 // While experimenting, you can set a rpc endpoint to be used by the web3 provider
-// You can also set the address for your own ethr-did-registry contract
+// You can also set the address for your own metablox-did-registry contract
 const providerConfig = { rpcUrl: 'http://localhost:7545', registry: registry.address }
 // It's recommended to use the multi-network configuration when using this in production
 // since that allows you to resolve on multiple public and private networks at the same time.
 
-// getResolver will return an object with a key/value pair of { "ethr": resolver } where resolver is a function used by the generic did resolver.
-const ethrDidResolver = getResolver(providerConfig)
-const didResolver = new Resolver(ethrDidResolver)
+// getResolver will return an object with a key/value pair of { "metablox": resolver } where resolver is a function used by the generic did resolver.
+const metabloxDidResolver = getResolver(providerConfig)
+const didResolver = new Resolver(metabloxDidResolver)
 
-didResolver.resolve('did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74').then((doc) => console.log)
+didResolver.resolve('did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74').then((doc) => console.log)
 
 // You can also use ES7 async/await syntax
-const doc = await didResolver.resolve('did:ethr:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74')
+const doc = await didResolver.resolve('did:metablox:0xf3beac30c498d9e26865f34fcaa57dbb935b0d74')
 ```
 
 ## Multi-network configuration
@@ -121,19 +121,19 @@ const providerConfig = {
   ]
 }
 
-const ethrDidResolver = getResolver(providerConfig)
+const metabloxDidResolver = getResolver(providerConfig)
 ```
 
-The configuration from above allows you to resolve ethr-did's of the following formats:
+The configuration from above allows you to resolve metablox-did's of the following formats:
 
-- `did:ethr:mainnet:0xabcabc03e98e0dc2b855be647c39abe984193675`
-- `did:ethr:0xabcabc03e98e0dc2b855be647c39abe984193675` (defaults to mainnet configuration)
-- `did:ethr:0x5:0xabcabc03e98e0dc2b855be647c39abe984193675` (refer to the goerli network by chainID)
-- `did:ethr:rsk:testnet:0xabcabc03e98e0dc2b855be647c39abe984193675`
-- `did:ethr:0x1f:0xabcabc03e98e0dc2b855be647c39abe984193675` (refer to the rsk:testnet by chainID)
-- `did:ethr:development:0xabcabc03e98e0dc2b855be647c39abe984193675`
-- `did:ethr:myprivatenet:0xabcabc03e98e0dc2b855be647c39abe984193675`
-- `did:ethr:0x1e240:0xabcabc03e98e0dc2b855be647c39abe984193675` (refer to `myprivatenet` by chainID)
+- `did:metablox:mainnet:0xabcabc03e98e0dc2b855be647c39abe984193675`
+- `did:metablox:0xabcabc03e98e0dc2b855be647c39abe984193675` (defaults to mainnet configuration)
+- `did:metablox:0x5:0xabcabc03e98e0dc2b855be647c39abe984193675` (refer to the goerli network by chainID)
+- `did:metablox:rsk:testnet:0xabcabc03e98e0dc2b855be647c39abe984193675`
+- `did:metablox:0x1f:0xabcabc03e98e0dc2b855be647c39abe984193675` (refer to the rsk:testnet by chainID)
+- `did:metablox:development:0xabcabc03e98e0dc2b855be647c39abe984193675`
+- `did:metablox:myprivatenet:0xabcabc03e98e0dc2b855be647c39abe984193675`
+- `did:metablox:0x1e240:0xabcabc03e98e0dc2b855be647c39abe984193675` (refer to `myprivatenet` by chainID)
 
 For each network you can specify either an `rpcUrl`, a `provider` or a `web3` instance that can be used to access that
 particular network. At least one of `name` or `chainId` must be specified per network.

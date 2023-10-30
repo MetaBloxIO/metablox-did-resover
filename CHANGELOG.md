@@ -3,166 +3,166 @@
 
 ### Bug Fixes
 
-* **deps:** update ethers to v6 ([#188](https://github.com/decentralized-identity/metablox-did-resolver/issues/188)) ([2785e61](https://github.com/decentralized-identity/ethr-did-resolver/commit/2785e615594a73693dcbec86506af666424184cd))
+* **deps:** update ethers to v6 ([#188](https://github.com/decentralized-identity/metablox-did-resolver/issues/188)) ([2785e61](https://github.com/decentralized-identity/metablox-did-resolver/commit/2785e615594a73693dcbec86506af666424184cd))
 
 
 ### BREAKING CHANGES
 
 * **deps:** this update uses ethers v6 which has a sufficiently different API from v5 that will likely need attention. While the API of this library hasn't changed, it is likely that an update will need attention so this is marked as a breaking change and a new major version is released.
 
-## [8.1.2](https://github.com/decentralized-identity/ethr-did-resolver/compare/8.1.1...8.1.2) (2023-07-13)
+## [8.1.2](https://github.com/decentralized-identity/metablox-did-resolver/compare/8.1.1...8.1.2) (2023-07-13)
 
 
 ### Bug Fixes
 
-* **deps:** update all non-major dependencies ([5d1be47](https://github.com/decentralized-identity/ethr-did-resolver/commit/5d1be475b6597c60e24bf0d6efa80cb058d68667))
+* **deps:** update all non-major dependencies ([5d1be47](https://github.com/decentralized-identity/metablox-did-resolver/commit/5d1be475b6597c60e24bf0d6efa80cb058d68667))
 
-## [8.1.1](https://github.com/decentralized-identity/ethr-did-resolver/compare/8.1.0...8.1.1) (2023-07-12)
+## [8.1.1](https://github.com/decentralized-identity/metablox-did-resolver/compare/8.1.0...8.1.1) (2023-07-12)
 
 
 ### Bug Fixes
 
-* **deps:** Update dependency did-resolver to v4.1.0 ([ea501e1](https://github.com/decentralized-identity/ethr-did-resolver/commit/ea501e19dd1c4af465eeb8761b31bb0fc4999124))
+* **deps:** Update dependency did-resolver to v4.1.0 ([ea501e1](https://github.com/decentralized-identity/metablox-did-resolver/commit/ea501e19dd1c4af465eeb8761b31bb0fc4999124))
 
-# [8.1.0](https://github.com/decentralized-identity/ethr-did-resolver/compare/8.0.0...8.1.0) (2023-07-12)
+# [8.1.0](https://github.com/decentralized-identity/metablox-did-resolver/compare/8.0.0...8.1.0) (2023-07-12)
 
 
 ### Features
 
-* add linea:goerli deployment ([b7a36b3](https://github.com/decentralized-identity/ethr-did-resolver/commit/b7a36b3b4bc16f9d502ce2bec43b7d6f7dc1b4cc))
+* add linea:goerli deployment ([b7a36b3](https://github.com/decentralized-identity/metablox-did-resolver/commit/b7a36b3b4bc16f9d502ce2bec43b7d6f7dc1b4cc))
 
-# [8.0.0](https://github.com/decentralized-identity/ethr-did-resolver/compare/7.0.2...8.0.0) (2022-11-07)
+# [8.0.0](https://github.com/decentralized-identity/metablox-did-resolver/compare/7.0.2...8.0.0) (2022-11-07)
 
 
 ### Bug Fixes
 
-* **spec:** remove ambiguity around deletion ([#178](https://github.com/decentralized-identity/ethr-did-resolver/issues/178)) ([da8e22e](https://github.com/decentralized-identity/ethr-did-resolver/commit/da8e22e74449f81e18bf5b23202f9e2f98627f23)), closes [#177](https://github.com/decentralized-identity/ethr-did-resolver/issues/177)
+* **spec:** remove ambiguity around deletion ([#178](https://github.com/decentralized-identity/metablox-did-resolver/issues/178)) ([da8e22e](https://github.com/decentralized-identity/metablox-did-resolver/commit/da8e22e74449f81e18bf5b23202f9e2f98627f23)), closes [#177](https://github.com/decentralized-identity/metablox-did-resolver/issues/177)
 
 
 ### BREAKING CHANGES
 
 * **spec:** This is a breaking change of the spec as "soft deletion" of non-updated DIDs is no longer considered valid.
 
-## [7.0.2](https://github.com/decentralized-identity/ethr-did-resolver/compare/7.0.1...7.0.2) (2022-10-24)
+## [7.0.2](https://github.com/decentralized-identity/metablox-did-resolver/compare/7.0.1...7.0.2) (2022-10-24)
 
 
 ### Bug Fixes
 
-* **build:** add named exports to esm wrapper ([#176](https://github.com/decentralized-identity/ethr-did-resolver/issues/176)) ([725ed25](https://github.com/decentralized-identity/ethr-did-resolver/commit/725ed250074f19e5d18d8e2b55454391102d5401)), closes [#175](https://github.com/decentralized-identity/ethr-did-resolver/issues/175)
+* **build:** add named exports to esm wrapper ([#176](https://github.com/decentralized-identity/metablox-did-resolver/issues/176)) ([725ed25](https://github.com/decentralized-identity/metablox-did-resolver/commit/725ed250074f19e5d18d8e2b55454391102d5401)), closes [#175](https://github.com/decentralized-identity/metablox-did-resolver/issues/175)
 
-## [7.0.1](https://github.com/decentralized-identity/ethr-did-resolver/compare/7.0.0...7.0.1) (2022-10-17)
-
-
-### Bug Fixes
-
-* **deps:** update did-resolver to 4.0.1 ([#172](https://github.com/decentralized-identity/ethr-did-resolver/issues/172)) ([ce38d01](https://github.com/decentralized-identity/ethr-did-resolver/commit/ce38d01802344db76eae7f753a067fba4fd759de))
-
-# [7.0.0](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.2.3...7.0.0) (2022-10-17)
+## [7.0.1](https://github.com/decentralized-identity/metablox-did-resolver/compare/7.0.0...7.0.1) (2022-10-17)
 
 
 ### Bug Fixes
 
-* **build:** transpile for commonjs, use wrapper for esm ([#170](https://github.com/decentralized-identity/ethr-did-resolver/issues/170)) ([5eba679](https://github.com/decentralized-identity/ethr-did-resolver/commit/5eba679b159fc88cef6e4ac8a59e0c3553747443))
+* **deps:** update did-resolver to 4.0.1 ([#172](https://github.com/decentralized-identity/metablox-did-resolver/issues/172)) ([ce38d01](https://github.com/decentralized-identity/metablox-did-resolver/commit/ce38d01802344db76eae7f753a067fba4fd759de))
+
+# [7.0.0](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.2.3...7.0.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* **build:** transpile for commonjs, use wrapper for esm ([#170](https://github.com/decentralized-identity/metablox-did-resolver/issues/170)) ([5eba679](https://github.com/decentralized-identity/metablox-did-resolver/commit/5eba679b159fc88cef6e4ac8a59e0c3553747443))
 
 
 ### BREAKING CHANGES
 
 * **build:** previous versions (<7.0.0) would be transpiled twice by microbundle, but this seems to be [anti-pattern](https://redfin.engineering/node-modules-at-war-why-commonjs-and-es-modules-cant-get-along-9617135eeca1)
 
-Please raise an issue on https://github.com/decentralized-identity/ethr-did-resolver if this change is incompatible with your tech stack and there are no workarounds.
+Please raise an issue on https://github.com/decentralized-identity/metablox-did-resolver if this change is incompatible with your tech stack and there are no workarounds.
 
-# [7.0.0-alpha.3](https://github.com/decentralized-identity/ethr-did-resolver/compare/7.0.0-alpha.2...7.0.0-alpha.3) (2022-10-14)
-
-
-### Bug Fixes
-
-* **build:** use commonjs module in tsconfig ([e66d054](https://github.com/decentralized-identity/ethr-did-resolver/commit/e66d054e8c6af9f90bcd55389786488f16ed1ce4))
-* **ci:** run tests on a matrix of node versions ([3825ac0](https://github.com/decentralized-identity/ethr-did-resolver/commit/3825ac04889ec0fc2564cc82c8b94b51a521ef85))
-
-# [7.0.0-alpha.2](https://github.com/decentralized-identity/ethr-did-resolver/compare/7.0.0-alpha.1...7.0.0-alpha.2) (2022-10-14)
+# [7.0.0-alpha.3](https://github.com/decentralized-identity/metablox-did-resolver/compare/7.0.0-alpha.2...7.0.0-alpha.3) (2022-10-14)
 
 
 ### Bug Fixes
 
-* **build:** build commonjs and also expose esm wrapper ([522c199](https://github.com/decentralized-identity/ethr-did-resolver/commit/522c1999877c26dd3b1959111cd9d155987ada19))
+* **build:** use commonjs module in tsconfig ([e66d054](https://github.com/decentralized-identity/metablox-did-resolver/commit/e66d054e8c6af9f90bcd55389786488f16ed1ce4))
+* **ci:** run tests on a matrix of node versions ([3825ac0](https://github.com/decentralized-identity/metablox-did-resolver/commit/3825ac04889ec0fc2564cc82c8b94b51a521ef85))
 
-# [7.0.0-alpha.1](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.2.4-alpha.1...7.0.0-alpha.1) (2022-10-13)
+# [7.0.0-alpha.2](https://github.com/decentralized-identity/metablox-did-resolver/compare/7.0.0-alpha.1...7.0.0-alpha.2) (2022-10-14)
 
 
 ### Bug Fixes
 
-* add esm wrapper instead of double transpile ([d2bbeaf](https://github.com/decentralized-identity/ethr-did-resolver/commit/d2bbeafbd2d77308f12d73f952b0b9940431dd83))
+* **build:** build commonjs and also expose esm wrapper ([522c199](https://github.com/decentralized-identity/metablox-did-resolver/commit/522c1999877c26dd3b1959111cd9d155987ada19))
+
+# [7.0.0-alpha.1](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.2.4-alpha.1...7.0.0-alpha.1) (2022-10-13)
+
+
+### Bug Fixes
+
+* add esm wrapper instead of double transpile ([d2bbeaf](https://github.com/decentralized-identity/metablox-did-resolver/commit/d2bbeafbd2d77308f12d73f952b0b9940431dd83))
 
 
 ### BREAKING CHANGES
 
 * ESM is only supported through a wrapper
 
-## [6.2.4-alpha.1](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.2.3...6.2.4-alpha.1) (2022-10-13)
+## [6.2.4-alpha.1](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.2.3...6.2.4-alpha.1) (2022-10-13)
 
 
 ### Bug Fixes
 
-* create alpha release ([1d5d5f2](https://github.com/decentralized-identity/ethr-did-resolver/commit/1d5d5f21e3d9f13500faf1acfdef89819589606c))
+* create alpha release ([1d5d5f2](https://github.com/decentralized-identity/metablox-did-resolver/commit/1d5d5f21e3d9f13500faf1acfdef89819589606c))
 
-## [6.2.3](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.2.2...6.2.3) (2022-10-12)
-
-
-### Bug Fixes
-
-* e2e tests with deprecated ethr test networks ([0fd9915](https://github.com/decentralized-identity/ethr-did-resolver/commit/0fd99151303182b8ee659bcbd72a8e7211702a1d))
-* hex values getting wrongly encoded to utf8 for setAttributeSigned ([c5c8989](https://github.com/decentralized-identity/ethr-did-resolver/commit/c5c8989289d8f4db7716eec8e4bb3979485c3394))
-
-## [6.2.2](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.2.1...6.2.2) (2022-09-07)
+## [6.2.3](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.2.2...6.2.3) (2022-10-12)
 
 
 ### Bug Fixes
 
-* export MetaSignature type ([62f250a](https://github.com/decentralized-identity/ethr-did-resolver/commit/62f250a16067761ebbefefe01af59306d27cffe7))
+* e2e tests with deprecated metablox test networks ([0fd9915](https://github.com/decentralized-identity/metablox-did-resolver/commit/0fd99151303182b8ee659bcbd72a8e7211702a1d))
+* hex values getting wrongly encoded to utf8 for setAttributeSigned ([c5c8989](https://github.com/decentralized-identity/metablox-did-resolver/commit/c5c8989289d8f4db7716eec8e4bb3979485c3394))
 
-## [6.2.1](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.2.0...6.2.1) (2022-09-06)
+## [6.2.2](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.2.1...6.2.2) (2022-09-07)
 
 
 ### Bug Fixes
 
-* track legacy deployments, fix nonce calculation, export contract ([#167](https://github.com/decentralized-identity/ethr-did-resolver/issues/167)) ([c0d0366](https://github.com/decentralized-identity/ethr-did-resolver/commit/c0d036618fd17f46053a6dd736e72d1aca91f358)), closes [#165](https://github.com/decentralized-identity/ethr-did-resolver/issues/165) [#166](https://github.com/decentralized-identity/ethr-did-resolver/issues/166)
+* export MetaSignature type ([62f250a](https://github.com/decentralized-identity/metablox-did-resolver/commit/62f250a16067761ebbefefe01af59306d27cffe7))
 
-# [6.2.0](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.1.0...6.2.0) (2022-09-05)
+## [6.2.1](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.2.0...6.2.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* track legacy deployments, fix nonce calculation, export contract ([#167](https://github.com/decentralized-identity/metablox-did-resolver/issues/167)) ([c0d0366](https://github.com/decentralized-identity/metablox-did-resolver/commit/c0d036618fd17f46053a6dd736e72d1aca91f358)), closes [#165](https://github.com/decentralized-identity/metablox-did-resolver/issues/165) [#166](https://github.com/decentralized-identity/metablox-did-resolver/issues/166)
+
+# [6.2.0](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.1.0...6.2.0) (2022-09-05)
 
 
 ### Features
 
-* add controller support for meta/signed transactions ([#164](https://github.com/decentralized-identity/ethr-did-resolver/issues/164)) ([ce93e70](https://github.com/decentralized-identity/ethr-did-resolver/commit/ce93e703415ed7ea120cdb95bd1f32951e3b062a))
+* add controller support for meta/signed transactions ([#164](https://github.com/decentralized-identity/metablox-did-resolver/issues/164)) ([ce93e70](https://github.com/decentralized-identity/metablox-did-resolver/commit/ce93e703415ed7ea120cdb95bd1f32951e3b062a))
 
-# [6.1.0](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.0.2...6.1.0) (2022-08-04)
+# [6.1.0](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.0.2...6.1.0) (2022-08-04)
 
 
 ### Features
 
-* add experimental support for ServiceEndpoint objects ([#163](https://github.com/decentralized-identity/ethr-did-resolver/issues/163)) ([3919a25](https://github.com/decentralized-identity/ethr-did-resolver/commit/3919a25746d68d42ed79c3437a7e0734aa19b46c))
+* add experimental support for ServiceEndpoint objects ([#163](https://github.com/decentralized-identity/metablox-did-resolver/issues/163)) ([3919a25](https://github.com/decentralized-identity/metablox-did-resolver/commit/3919a25746d68d42ed79c3437a7e0734aa19b46c))
 
-## [6.0.2](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.0.1...6.0.2) (2022-07-08)
-
-
-### Bug Fixes
-
-* revert aurora tweaks and use known deployments in config ([#161](https://github.com/decentralized-identity/ethr-did-resolver/issues/161)) ([e238a9f](https://github.com/decentralized-identity/ethr-did-resolver/commit/e238a9f6c081e4c898391d3c80c2d4ab52f93677))
-
-## [6.0.1](https://github.com/decentralized-identity/ethr-did-resolver/compare/6.0.0...6.0.1) (2022-06-06)
+## [6.0.2](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.0.1...6.0.2) (2022-07-08)
 
 
 ### Bug Fixes
 
-* **ci:** groom the build scripts and dependencies ([#156](https://github.com/decentralized-identity/ethr-did-resolver/issues/156)) ([9a53958](https://github.com/decentralized-identity/ethr-did-resolver/commit/9a53958e3a711d50416594f78a9b2a86ad5e9f93))
+* revert aurora tweaks and use known deployments in config ([#161](https://github.com/decentralized-identity/metablox-did-resolver/issues/161)) ([e238a9f](https://github.com/decentralized-identity/metablox-did-resolver/commit/e238a9f6c081e4c898391d3c80c2d4ab52f93677))
 
-# [6.0.0](https://github.com/decentralized-identity/ethr-did-resolver/compare/5.0.4...6.0.0) (2022-06-05)
+## [6.0.1](https://github.com/decentralized-identity/metablox-did-resolver/compare/6.0.0...6.0.1) (2022-06-06)
 
 
 ### Bug Fixes
 
-* **doc:** update LD [@context](https://github.com/context) ([#154](https://github.com/decentralized-identity/ethr-did-resolver/issues/154)) ([29c196a](https://github.com/decentralized-identity/ethr-did-resolver/commit/29c196a507f086e24113c7254e082cccd4978af3)), closes [#151](https://github.com/decentralized-identity/ethr-did-resolver/issues/151)
-* **doc:** update spec to use new CAIP10 format ([77a4f67](https://github.com/decentralized-identity/ethr-did-resolver/commit/77a4f670859da3e7bbbd5f0c9d39cf490579fd79))
-* update blockchainAccountId to the new CAIP10 format ([#153](https://github.com/decentralized-identity/ethr-did-resolver/issues/153)) ([9c3f401](https://github.com/decentralized-identity/ethr-did-resolver/commit/9c3f4011d525f0b7295cb3e0226a423513e3460f)), closes [#152](https://github.com/decentralized-identity/ethr-did-resolver/issues/152)
+* **ci:** groom the build scripts and dependencies ([#156](https://github.com/decentralized-identity/metablox-did-resolver/issues/156)) ([9a53958](https://github.com/decentralized-identity/metablox-did-resolver/commit/9a53958e3a711d50416594f78a9b2a86ad5e9f93))
+
+# [6.0.0](https://github.com/decentralized-identity/metablox-did-resolver/compare/5.0.4...6.0.0) (2022-06-05)
+
+
+### Bug Fixes
+
+* **doc:** update LD [@context](https://github.com/context) ([#154](https://github.com/decentralized-identity/metablox-did-resolver/issues/154)) ([29c196a](https://github.com/decentralized-identity/metablox-did-resolver/commit/29c196a507f086e24113c7254e082cccd4978af3)), closes [#151](https://github.com/decentralized-identity/metablox-did-resolver/issues/151)
+* **doc:** update spec to use new CAIP10 format ([77a4f67](https://github.com/decentralized-identity/metablox-did-resolver/commit/77a4f670859da3e7bbbd5f0c9d39cf490579fd79))
+* update blockchainAccountId to the new CAIP10 format ([#153](https://github.com/decentralized-identity/metablox-did-resolver/issues/153)) ([9c3f401](https://github.com/decentralized-identity/metablox-did-resolver/commit/9c3f4011d525f0b7295cb3e0226a423513e3460f)), closes [#152](https://github.com/decentralized-identity/metablox-did-resolver/issues/152)
 
 
 ### BREAKING CHANGES
@@ -170,40 +170,40 @@ Please raise an issue on https://github.com/decentralized-identity/ethr-did-reso
 * **doc:** Since the context definitions most often have to be embedded in apps, this requires apps to download the new definition.
 * Apps have to update their processing of `blockchainAccountId` to use the [new CAIP10 format](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-10.md)
 
-## [5.0.4](https://github.com/decentralized-identity/ethr-did-resolver/compare/5.0.3...5.0.4) (2022-01-20)
+## [5.0.4](https://github.com/decentralized-identity/metablox-did-resolver/compare/5.0.3...5.0.4) (2022-01-20)
 
 
 ### Bug Fixes
 
-* broaden window for event logs processing (fix Aurora) ([#149](https://github.com/decentralized-identity/ethr-did-resolver/issues/149)) ([5ee6bed](https://github.com/decentralized-identity/ethr-did-resolver/commit/5ee6beda7547fdc2dca4a3a2f0f62442c676861f))
+* broaden window for event logs processing (fix Aurora) ([#149](https://github.com/decentralized-identity/metablox-did-resolver/issues/149)) ([5ee6bed](https://github.com/decentralized-identity/metablox-did-resolver/commit/5ee6beda7547fdc2dca4a3a2f0f62442c676861f))
 
-## [5.0.3](https://github.com/decentralized-identity/ethr-did-resolver/compare/5.0.2...5.0.3) (2022-01-13)
-
-
-### Bug Fixes
-
-* **deps:** remove querystring in favor of UrlSearchParams ([cd5e596](https://github.com/decentralized-identity/ethr-did-resolver/commit/cd5e596b688d73c4a47b2f59b19021d66e77679d))
-
-## [5.0.2](https://github.com/decentralized-identity/ethr-did-resolver/compare/5.0.1...5.0.2) (2021-11-10)
+## [5.0.3](https://github.com/decentralized-identity/metablox-did-resolver/compare/5.0.2...5.0.3) (2022-01-13)
 
 
 ### Bug Fixes
 
-* **deps:** bump ethers to ^5.5.0 ([c39788a](https://github.com/decentralized-identity/ethr-did-resolver/commit/c39788a3de71b60cd962b23d073f35cff95c63d7))
+* **deps:** remove querystring in favor of UrlSearchParams ([cd5e596](https://github.com/decentralized-identity/metablox-did-resolver/commit/cd5e596b688d73c4a47b2f59b19021d66e77679d))
 
-## [5.0.1](https://github.com/decentralized-identity/ethr-did-resolver/compare/5.0.0...5.0.1) (2021-11-10)
-
-
-### Bug Fixes
-
-* **deps:** bump did-resolver to 3.1.3+ ([0ddde4b](https://github.com/decentralized-identity/ethr-did-resolver/commit/0ddde4b7ec3946bee22cc29e42dbba2dedd06585))
-
-# [5.0.0](https://github.com/decentralized-identity/ethr-did-resolver/compare/4.3.5...5.0.0) (2021-11-10)
+## [5.0.2](https://github.com/decentralized-identity/metablox-did-resolver/compare/5.0.1...5.0.2) (2021-11-10)
 
 
 ### Bug Fixes
 
-* remove 0x prefix from publicKeyHex ([#147](https://github.com/decentralized-identity/ethr-did-resolver/issues/147)) ([063ee67](https://github.com/decentralized-identity/ethr-did-resolver/commit/063ee67a6107f325edff34b7aa89daa26b33a8c5)), closes [#140](https://github.com/decentralized-identity/ethr-did-resolver/issues/140)
+* **deps:** bump ethers to ^5.5.0 ([c39788a](https://github.com/decentralized-identity/metablox-did-resolver/commit/c39788a3de71b60cd962b23d073f35cff95c63d7))
+
+## [5.0.1](https://github.com/decentralized-identity/metablox-did-resolver/compare/5.0.0...5.0.1) (2021-11-10)
+
+
+### Bug Fixes
+
+* **deps:** bump did-resolver to 3.1.3+ ([0ddde4b](https://github.com/decentralized-identity/metablox-did-resolver/commit/0ddde4b7ec3946bee22cc29e42dbba2dedd06585))
+
+# [5.0.0](https://github.com/decentralized-identity/metablox-did-resolver/compare/4.3.5...5.0.0) (2021-11-10)
+
+
+### Bug Fixes
+
+* remove 0x prefix from publicKeyHex ([#147](https://github.com/decentralized-identity/metablox-did-resolver/issues/147)) ([063ee67](https://github.com/decentralized-identity/metablox-did-resolver/commit/063ee67a6107f325edff34b7aa89daa26b33a8c5)), closes [#140](https://github.com/decentralized-identity/metablox-did-resolver/issues/140)
 
 
 ### BREAKING CHANGES

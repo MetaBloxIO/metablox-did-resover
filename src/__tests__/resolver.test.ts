@@ -903,12 +903,12 @@ describe('metabloxResolver', () => {
   })
 
   describe('regression', () => {
-    it('resolves same document with case sensitive eth address (https://github.com/decentralized-identity/ethr-did-resolver/issues/105)', async () => {
+    it('resolves same document with case sensitive eth address (https://github.com/decentralized-identity/metablox-did-resolver/issues/105)', async () => {
       expect.assertions(3)
       const lowAddress = accounts[5].toLowerCase()
       const checksumAddress = interpretIdentifier(lowAddress).address
-      const lowDid = `did:ethr:dev:${lowAddress}`
-      const checksumDid = `did:ethr:dev:${checksumAddress}`
+      const lowDid = `did:metablox:dev:${lowAddress}`
+      const checksumDid = `did:metablox:dev:${checksumAddress}`
       await new EthrDidController(lowAddress, registryContract).setAttribute(
         'did/pub/Secp256k1/veriKey/hex',
         '0x02b97c30de767f084ce3080168ee293053ba33b235d7116a3263d29f1450936b71',
@@ -923,10 +923,10 @@ describe('metabloxResolver', () => {
       expect(JSON.stringify(didDocumentLow).toLowerCase()).toEqual(JSON.stringify(didDocumentChecksum).toLowerCase())
     })
 
-    it('adds sigAuth to authentication section (https://github.com/decentralized-identity/ethr-did-resolver/issues/95)', async () => {
+    it('adds sigAuth to authentication section (https://github.com/decentralized-identity/metablox-did-resolver/issues/95)', async () => {
       expect.assertions(1)
       const address = accounts[4]
-      const identifier = `did:ethr:dev:${address}`
+      const identifier = `did:metablox:dev:${address}`
       const authPubKey = `31303866356238393330623164633235386162353765386630646362363932353963363162316166`
       await new EthrDidController(identifier, registryContract).setAttribute(
         'did/pub/Ed25519/sigAuth/hex',
@@ -957,11 +957,11 @@ describe('metabloxResolver', () => {
       })
     })
 
-    describe('Ed25519VerificationKey2018 in base58 (https://github.com/decentralized-identity/ethr-did-resolver/pull/106)', () => {
+    describe('Ed25519VerificationKey2018 in base58 (https://github.com/decentralized-identity/metablox-did-resolver/pull/106)', () => {
       it('resolves document', async () => {
         expect.assertions(1)
         const address = accounts[3]
-        const identifier = `did:ethr:dev:${address}`
+        const identifier = `did:metablox:dev:${address}`
         const publicKeyHex = `b97c30de767f084ce3080168ee293053ba33b235d7116a3263d29f1450936b71`
         const expectedPublicKeyBase58 = 'DV4G2kpBKjE6zxKor7Cj21iL9x9qyXb6emqjszBXcuhz'
         const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
@@ -999,11 +999,11 @@ describe('metabloxResolver', () => {
       })
     })
 
-    describe('can deactivate a DID (https://github.com/decentralized-identity/ethr-did-resolver/issues/83)', () => {
+    describe('can deactivate a DID (https://github.com/decentralized-identity/metablox-did-resolver/issues/83)', () => {
       it('resolves deactivated document', async () => {
         expect.assertions(1)
         const address = accounts[6]
-        const identifier = `did:ethr:dev:${address}`
+        const identifier = `did:metablox:dev:${address}`
         const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
         await new EthrDidController(identifier, registryContract).changeOwner(nullAddress, { from: address })
         const result = await didResolver.resolve(identifier)
@@ -1029,7 +1029,7 @@ describe('metabloxResolver', () => {
       it('can resolve virgin DID with versionId=latest', async () => {
         expect.assertions(1)
         const virginAddress = '0xce3080168EE293053bA33b235D7116a3263D29f1'
-        const virginDID = `did:ethr:dev:${virginAddress}`
+        const virginDID = `did:metablox:dev:${virginAddress}`
         const result = await didResolver.resolve(`${virginDID}?versionId=latest`)
         expect(result).toEqual({
           didDocumentMetadata: {},
@@ -1055,7 +1055,7 @@ describe('metabloxResolver', () => {
 
       it('can resolve did with versionId before deactivation', async () => {
         expect.assertions(1)
-        const deactivatedDid = `did:ethr:dev:${accounts[6]}`
+        const deactivatedDid = `did:metablox:dev:${accounts[6]}`
         const { didDocumentMetadata } = await didResolver.resolve(deactivatedDid)
         const deactivationBlock = parseInt(didDocumentMetadata.versionId ?? '')
         const result = await didResolver.resolve(`${deactivatedDid}?versionId=${deactivationBlock - 1}`)
@@ -1085,7 +1085,7 @@ describe('metabloxResolver', () => {
       it('can resolve modified did with versionId=latest', async () => {
         expect.assertions(1)
         const address = accounts[7]
-        const identifier = `did:ethr:dev:${address}`
+        const identifier = `did:metablox:dev:${address}`
         const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
         // change owner to self
         await new EthrDidController(identifier, registryContract).changeOwner(address, { from: address })
@@ -1114,12 +1114,12 @@ describe('metabloxResolver', () => {
         expect.assertions(1)
 
         const address = accounts[8]
-        const identifier = `did:ethr:dev:${address}`
+        const identifier = `did:metablox:dev:${address}`
 
         const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
-        const ethrDid = new EthrDidController(identifier, registryContract)
-        await ethrDid.setAttribute('did/pub/Ed25519/veriKey/hex', `0x11111111`, 86411, { from: address })
-        await ethrDid.setAttribute('did/pub/Ed25519/veriKey/hex', `0x22222222`, 86412, { from: address })
+        const metabloxDid = new EthrDidController(identifier, registryContract)
+        await metabloxDid.setAttribute('did/pub/Ed25519/veriKey/hex', `0x11111111`, 86411, { from: address })
+        await metabloxDid.setAttribute('did/pub/Ed25519/veriKey/hex', `0x22222222`, 86412, { from: address })
 
         const result = await didResolver.resolve(`${identifier}?versionId=${blockHeightBeforeChange + 1}`)
         expect(result).toEqual({
@@ -1158,12 +1158,12 @@ describe('metabloxResolver', () => {
         const delegateAddress1 = '0xde1E9a7e00000000000000000000000000000001'
         const delegateAddress2 = '0xde1e9a7e00000000000000000000000000000002'
         const address = accounts[9]
-        const identifier = `did:ethr:dev:${address}`
+        const identifier = `did:metablox:dev:${address}`
 
-        const ethrDid = new EthrDidController(identifier, registryContract)
+        const metabloxDid = new EthrDidController(identifier, registryContract)
         const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
-        await ethrDid.addDelegate('veriKey', delegateAddress1, 86401, { from: address })
-        await ethrDid.addDelegate('veriKey', delegateAddress2, 86402, { from: address })
+        await metabloxDid.addDelegate('veriKey', delegateAddress1, 86401, { from: address })
+        await metabloxDid.addDelegate('veriKey', delegateAddress2, 86402, { from: address })
 
         const result = await didResolver.resolve(`${identifier}?versionId=${blockHeightBeforeChange + 1}`)
         expect(result).toEqual({
@@ -1201,12 +1201,12 @@ describe('metabloxResolver', () => {
         expect.assertions(1)
         const newOwner = '0xde1e9a7e00000000000000000000000000000003'
         const address = accounts[10]
-        const identifier = `did:ethr:dev:${address}`
+        const identifier = `did:metablox:dev:${address}`
 
-        const ethrDid = new EthrDidController(identifier, registryContract)
+        const metabloxDid = new EthrDidController(identifier, registryContract)
         const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
-        await ethrDid.changeOwner(address, { from: address })
-        await ethrDid.changeOwner(newOwner, { from: address })
+        await metabloxDid.changeOwner(address, { from: address })
+        await metabloxDid.changeOwner(newOwner, { from: address })
         const result = await didResolver.resolve(`${identifier}?versionId=${blockHeightBeforeChange + 1}`)
         expect(result).toEqual({
           didDocumentMetadata: {
@@ -1237,7 +1237,7 @@ describe('metabloxResolver', () => {
         expect.assertions(3)
         const delegate = '0xde1E9a7e00000000000000000000000000000001'
         const address = accounts[11]
-        const identifier = `did:ethr:dev:${address}`
+        const identifier = `did:metablox:dev:${address}`
 
         await new EthrDidController(identifier, registryContract).addDelegate('sigAuth', delegate, 4, {
           from: address,
@@ -1292,15 +1292,15 @@ describe('metabloxResolver', () => {
       expect.assertions(1)
 
       const address = accounts[12]
-      const identifier = `did:ethr:dev:${address}`
+      const identifier = `did:metablox:dev:${address}`
 
-      const ethrDid = new EthrDidController(identifier, registryContract)
+      const metabloxDid = new EthrDidController(identifier, registryContract)
       const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
       await stopMining(browserProvider)
-      const tx1 = ethrDid.setAttribute(stringToBytes32('did/svc/TestService'), 'https://test.uport.me', 86406, {
+      const tx1 = metabloxDid.setAttribute(stringToBytes32('did/svc/TestService'), 'https://test.uport.me', 86406, {
         from: address,
       })
-      const tx2 = ethrDid.setAttribute(stringToBytes32('did/svc/TestService'), 'https://test.uport.me', 86407, {
+      const tx2 = metabloxDid.setAttribute(stringToBytes32('did/svc/TestService'), 'https://test.uport.me', 86407, {
         from: address,
       })
       await sleep(1000)
@@ -1332,21 +1332,21 @@ describe('metabloxResolver', () => {
     it('adding 2 services in 2 consecutive blocks should result in only 2 services appearing in the DID doc (no duplication)', async () => {
       expect.assertions(2)
       const address = accounts[13]
-      const identifier = `did:ethr:dev:${address}`
+      const identifier = `did:metablox:dev:${address}`
 
-      const ethrDid = new EthrDidController(identifier, registryContract)
+      const metabloxDid = new EthrDidController(identifier, registryContract)
 
       const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
 
       // await stopMining(web3Provider)
-      await ethrDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
+      await metabloxDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
         from: address,
       })
       // await startMining(web3Provider)
       let result = await didResolver.resolve(identifier)
       expect(result.didDocumentMetadata.versionId).toEqual(`${blockHeightBeforeChange + 1}`)
       // await stopMining(web3Provider)
-      await ethrDid.setAttribute(stringToBytes32('did/svc/TestService2'), 'https://test2.uport.me', 86407, {
+      await metabloxDid.setAttribute(stringToBytes32('did/svc/TestService2'), 'https://test2.uport.me', 86407, {
         from: address,
       })
       // await startMining(web3Provider)
@@ -1380,19 +1380,19 @@ describe('metabloxResolver', () => {
     it('adding and removing a service in the same block should result in no change to the doc (correct order, same block)', async () => {
       expect.assertions(2)
       const address = accounts[14]
-      const identifier = `did:ethr:dev:${address}`
+      const identifier = `did:metablox:dev:${address}`
 
-      const ethrDid = new EthrDidController(identifier, registryContract)
+      const metabloxDid = new EthrDidController(identifier, registryContract)
 
       const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
 
       await stopMining(browserProvider)
-      const tx1 = ethrDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
+      const tx1 = metabloxDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
         from: address,
       })
       let result = await didResolver.resolve(identifier)
       expect(result.didDocumentMetadata.versionId).not.toBeDefined()
-      const tx2 = ethrDid.revokeAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', {
+      const tx2 = metabloxDid.revokeAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', {
         from: address,
       })
       await sleep(1000).then(() => startMining(browserProvider))
@@ -1417,18 +1417,18 @@ describe('metabloxResolver', () => {
     it('adding and removing a service in 2 consecutive blocks should result in no change to the doc (correct order 2 blocks).', async () => {
       expect.assertions(2)
       const address = accounts[15]
-      const identifier = `did:ethr:dev:${address}`
+      const identifier = `did:metablox:dev:${address}`
 
-      const ethrDid = new EthrDidController(identifier, registryContract)
+      const metabloxDid = new EthrDidController(identifier, registryContract)
 
       const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
 
-      await ethrDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
+      await metabloxDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
         from: address,
       })
       let result = await didResolver.resolve(identifier)
       expect(result.didDocumentMetadata.versionId).toEqual(`${blockHeightBeforeChange + 1}`)
-      await ethrDid.revokeAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', {
+      await metabloxDid.revokeAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', {
         from: address,
       })
 
@@ -1450,18 +1450,18 @@ describe('metabloxResolver', () => {
     it('removing a service and then adding it back in the next block should keep the service visible in the resolved doc (correct order 2 blocks, corner case)', async () => {
       expect.assertions(2)
       const address = accounts[16]
-      const identifier = `did:ethr:dev:${address}`
+      const identifier = `did:metablox:dev:${address}`
 
-      const ethrDid = new EthrDidController(identifier, registryContract)
+      const metabloxDid = new EthrDidController(identifier, registryContract)
 
       const blockHeightBeforeChange = (await browserProvider.getBlock('latest'))!.number
 
-      await ethrDid.revokeAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', {
+      await metabloxDid.revokeAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', {
         from: address,
       })
       let result = await didResolver.resolve(identifier)
       expect(result.didDocumentMetadata.versionId).toEqual(`${blockHeightBeforeChange + 1}`)
-      await ethrDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
+      await metabloxDid.setAttribute(stringToBytes32('did/svc/TestService1'), 'https://test1.uport.me', 86406, {
         from: address,
       })
 
@@ -1496,7 +1496,7 @@ describe('metabloxResolver', () => {
       // Delegate to add
       const delegate = accounts[3]
 
-      const identifier = `did:ethr:dev:${currentOwner}`
+      const identifier = `did:metablox:dev:${currentOwner}`
 
       const currentOwnerPrivateKey = getBytes('0x0000000000000000000000000000000000000000000000000000000000000002')
 
@@ -1554,7 +1554,7 @@ describe('metabloxResolver', () => {
       // Delegate to add
       const delegate = accounts[3]
 
-      const identifier = `did:ethr:dev:${currentOwner}`
+      const identifier = `did:metablox:dev:${currentOwner}`
 
       const currentOwnerPrivateKey = getBytes('0x0000000000000000000000000000000000000000000000000000000000000002')
 
@@ -1609,7 +1609,7 @@ describe('metabloxResolver', () => {
       const attributeValue = JSON.stringify(serviceEndpointParams)
       const attributeExpiration = 86400
 
-      const identifier = `did:ethr:dev:${currentOwner}`
+      const identifier = `did:metablox:dev:${currentOwner}`
 
       const currentOwnerPrivateKey = getBytes('0x0000000000000000000000000000000000000000000000000000000000000002')
 
@@ -1667,7 +1667,7 @@ describe('metabloxResolver', () => {
       const attributeValue = JSON.stringify(serviceEndpointParams)
       const attributeExpiration = 86400
 
-      const identifier = `did:ethr:dev:${currentOwner}`
+      const identifier = `did:metablox:dev:${currentOwner}`
 
       const currentOwnerPrivateKey = getBytes('0x0000000000000000000000000000000000000000000000000000000000000002')
 
@@ -1720,7 +1720,7 @@ describe('metabloxResolver', () => {
       // New owner of the Identity after change
       const nextOwner = accounts[3]
 
-      const identifier = `did:ethr:dev:${currentOwner}`
+      const identifier = `did:metablox:dev:${currentOwner}`
 
       const currentOwnerPrivateKey = getBytes('0x0000000000000000000000000000000000000000000000000000000000000002')
 
@@ -1769,7 +1769,7 @@ describe('metabloxResolver', () => {
         '0x0482c58dd8c94c08e3255394567bbae9a397a29ca1410e488364bb8c0701fb9eb2e448bbf95ac16dba9ab33e34fe59f80e9ddf519ddcc9fc1be9b65f9c645db558'
       const attributeExpiration = 86400
 
-      const identifier = `did:ethr:dev:${currentOwner}`
+      const identifier = `did:metablox:dev:${currentOwner}`
 
       const currentOwnerPrivateKey = getBytes('0x0000000000000000000000000000000000000000000000000000000000000003')
 
